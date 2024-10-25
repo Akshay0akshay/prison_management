@@ -1,0 +1,252 @@
+{% extends 'jailor/jailor_dashboard.html' %}
+{% block content %}
+<ol class="breadcrumb justify-content-left">
+    <li class="breadcrumb-item">
+        <a href="/jailor-dashboard">Home</a>
+    </li>
+    <li class="breadcrumb-item active">Edit Prisoner</li>
+</ol>
+<!-- //contact -->
+
+<section class="banner-bottom-wthree pt-lg-5 pt-md-3 pt-3">
+    <div class="inner-sec-w3ls pt-md-5 pt-md-3 pt-3">
+    <!---728x90--->
+        <h3 class="tittle text-center mb-lg-5 mb-2">
+            Edit</h3>
+            <!---728x90--->
+            <div class="container">
+                    
+                </div>
+        <div class="container-fluid">
+            <div class="row">
+                <!-- <div class="col-md-6 map"> -->
+                    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423286.27404345275!2d-118.69191921441556!3d34.02016130939095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos+Angeles%2C+CA%2C+USA!5e0!3m2!1sen!2sin!4v1522474296007"
+                        allowfullscreen></iframe> -->
+
+                <!-- </div> -->
+                <div class="col-md-10 mx-auto main_grid_contact">
+                    <div class="form">
+                        <h4 class="mb-4 text-left">Prisoner Edit</h4>
+                        <form action="#" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% for prisoner in prisoners %}
+                            <div class="form-group">
+                                <label class="my-2">First Name</label>
+                                <input class="form-control" type="text" value="{{prisoner.fname}}" name="fname" placeholder="" >
+                            </div>
+                            <div class="form-group">
+                                <label class="my-2">Last Name</label>
+                                <input class="form-control" type="text" value="{{prisoner.lname}}" name="lname" placeholder="" >
+                            </div>
+                            <div class="form-group">
+                                <label class="my-2">Address</label>
+                                <textarea class="form-control" type="text" value="" name="address" placeholder="">{{prisoner.address}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="my-2">Phone No:</label>
+                                <input class="form-control" type="text" value="{{prisoner.phone}}" name="phone" placeholder="" >
+                            </div>
+                            <div class="form-group">
+                                <label class="my-2">Rp No:</label>
+                                <input class="form-control" type="text" value="{{prisoner.aadhar}}" name="aadhar" placeholder="" >
+                            </div>
+                            <!-- <div class="form-group">
+                                <label>Prisoner Code</label>
+                                <input class="form-control" type="text" name="pcode" placeholder="" >
+                            </div>
+                            <div class="form-group">
+                                <label class="my-2">Father's Name</label>
+                                <input class="form-control" type="text" name="fathername" placeholder="" >
+                            </div>
+                            <div class="form-group">
+                                <label class="my-2">Mother's Name</label>
+                                <input class="form-control" type="text" name="mothername" placeholder="" >
+                            </div>
+                            <div class="form-group">
+                                <label class="my-2">Job</label>
+                                <input class="form-control" type="text" name="job" placeholder="" >
+                            </div>
+                            <div class="form-group">
+                                <label>Community</label><br>
+                                <select name="community" id="" style="display: block;
+                                width: 100%;
+                                padding: 0.375rem 0.75rem;
+                                font-size: 1rem;
+                                line-height: 1.5;
+                                color: #495057;
+                                background-color: #fff;
+                                background-clip: padding-box;
+                                border: 1px solid #ced4da;
+                                border-radius: 0.25rem;
+                                transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+                                    <option value="" disabled>---select---</option>
+                                    <option value="Hindhu">Hindhu</option>
+                                    <option value="Christian">Christian</option>
+                                    <option value="Muslim">Muslim</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Sex</label><br>
+                                <select name="sex" id="" style="display: block;
+                                width: 100%;
+                                padding: 0.375rem 0.75rem;
+                                font-size: 1rem;
+                                line-height: 1.5;
+                                color: #495057;
+                                background-color: #fff;
+                                background-clip: padding-box;
+                                border: 1px solid #ced4da;
+                                border-radius: 0.25rem;
+                                transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+                                    <option value="" disabled>---select---</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Allotted Cell</label><br>
+                                <select name="cell" id="" style="display: block;
+                                width: 100%;
+                                padding: 0.375rem 0.75rem;
+                                font-size: 1rem;
+                                line-height: 1.5;
+                                color: #495057;
+                                background-color: #fff;
+                                background-clip: padding-box;
+                                border: 1px solid #ced4da;
+                                border-radius: 0.25rem;
+                                transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+                                    <option value="" disabled>---select---</option>
+                                    <option value="Cell No: 1">Cell No: 1</option>
+                                    <option value="Cell No: 2">Cell No: 2</option>
+                                    <option value="Cell No: 3">Cell No: 3</option>
+                                    <option value="Cell No: 4">Cell No: 4</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Date-Of-Birth</label>
+                                <input class="form-control" type="date" name="dob" placeholder="" >
+                            </div>
+                        -->
+                            <div class="form-group">
+                                <label>Image</label><br>
+                                <img src="../../static/{{prisoner.prisoner_image}}" name="prev_image" alt="" style="float: left; margin-right: 3%; width: 12%; height: auto;">
+                               
+                                <input  type="file" value="" name="pimage"  >
+                            </div>
+                            <!--
+                            <div class="form-group">
+                                <label>Full Address</label>
+                                <textarea id="textarea" placeholder="" name="address"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>District</label><br>
+                                <select name="district" id="" style="display: block;
+                                width: 100%;
+                                padding: 0.375rem 0.75rem;
+                                font-size: 1rem;
+                                line-height: 1.5;
+                                color: #495057;
+                                background-color: #fff;
+                                background-clip: padding-box;
+                                border: 1px solid #ced4da;
+                                border-radius: 0.25rem;
+                                transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+                                    <option value="" disabled>---select---</option>
+                                    <option value="Tvm">Tvm</option>
+                                    <option value="Kollam">Kollam</option>
+                                    <option value="Pattanamthitta">Pattanamthitta</option>
+                                    <option value="Alappuzha">Alappuzha</option>
+                                    <option value="Kottayam">Kottayam</option>
+                                    <option value="Kollam">Idukki</option>
+                                    <option value="Ernakulam">Ernakulam</option>
+                                    <option value="Thrissure">Thrissure</option>
+                                    <option value="Palakkad">Palakkad</option>
+                                    <option value="Malappuram">Malappuram</option>
+                                    <option value="Kozhikode">Kozhikode</option>
+                                    <option value="Wayanad">Wayanad</option>
+                                    <option value="Kannur">Kannur</option>
+                                    <option value="Kasargod">Kasargod</option>
+                                </select>
+                            </div>-->
+                            
+                            <h5 class="j-b mb-5 mt-5">Crimes Committed</h5>
+                            
+                            <div class="form-group">
+                                <label>Crimes</label><br>
+                                <!-- <div class="form-group">
+                                     -->
+                                    <input class="form-control" type="text" value="{{prisoner.crimes}}" name="Crimes_prev" placeholder="" readonly>
+                                <!-- </div> -->
+                                <select name="Crimes" multiple id="" style="display: block;
+                                width: 100%;
+                                padding: 0.375rem 0.75rem;
+                                font-size: 1rem;
+                                line-height: 1.5;
+                                color: #495057;
+                                background-color: #fff;
+                                background-clip: padding-box;
+                                border: 1px solid #ced4da;
+                                border-radius: 0.25rem;
+                                transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;">
+                                    <option value="" disabled>{{prisoner.crimes}}</option>
+                                    <option value="Murder">Murder</option>
+                                    <option value="Rape">Rape</option>
+                                    <option value="Cyber Crime">Cyber Crime</option>
+                                    <option value="Violence">Violence</option>
+                                    <option value="Robery">Robery</option>
+                                    <option value="Kidnapping">Kidnapping</option>
+                                    <option value="Child Abuse">Child Abuse</option>
+                                    <option value="Terroism">Terroism</option>
+                                </select>
+                            </div>
+                            {% endfor %}
+                           <!-- <h5 class="j-b mb-5 mt-5">Emergency Contact Details</h5>
+                            <div class="form-group">
+                                <label class="my-2">Full Name</label>
+                                <input class="form-control" type="text" name="emergencyname" placeholder="" >
+                            </div>
+                            <div class="form-group">
+                                <label class="my-2">Phone</label>
+                                <input class="form-control" type="text" name="emergencyphone" placeholder="" >
+                            </div>
+                            <div class="form-group">
+                                <label class="my-2">Relation</label>
+                                <input class="form-control" type="text" name="emergencyrelation" placeholder="" >
+                            </div> -->
+                            <div class="input-group1">
+                                <!-- <input class="form-control" width="50%" type="submit" value="Submit"> -->
+                                <button type="submit" class="btn btn-secondary" style="outline: none;
+                                padding: 20px 0;
+                                width: 30%;
+                                font-size: 14px;
+                                color: #fff;
+                                background: grey;
+                                border: none;
+                                letter-spacing: 2px;
+                                text-transform: uppercase;
+                                -webkit-transition: 0.5s all;
+                                -moz-transition: 0.5s all;
+                                -o-transition: 0.5s all;
+                                -ms-transition: 0.5s all;
+                                transition: 0.5s all;
+                                font-weight: 600;
+                                cursor: pointer;
+                                border-radius: 0px;">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% if message %}
+    <ul class="messages">
+        {% for message in message %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

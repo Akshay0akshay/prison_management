@@ -1,0 +1,63 @@
+{% extends 'jailor/jailor_dashboard.html' %}
+{% block content %}
+<ol class="breadcrumb justify-content-left">
+    <li class="breadcrumb-item">
+        <a href="/jailor-dashboard">Home</a>
+    </li>
+    <li class="breadcrumb-item active">Visitor list</li>
+</ol>
+<section class="banner-bottom-wthree pt-lg-5 pt-md-3 pt-3">
+    <div class="inner-sec-w3ls pt-md-5 pt-md-3 pt-3">
+    <!---728x90--->
+        <h3 class="tittle text-center mb-lg-5 mb-2">
+            Visitor list</h3>
+            <!---728x90--->
+            <div class="container">
+                    
+                </div>
+        <div class="container-fluid">
+            <div class="row">
+                <!-- <div class="col-md-6 map"> -->
+                    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423286.27404345275!2d-118.69191921441556!3d34.02016130939095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos+Angeles%2C+CA%2C+USA!5e0!3m2!1sen!2sin!4v1522474296007"
+                        allowfullscreen></iframe> -->
+
+                <!-- </div> -->
+                <div class="col-md-10 mx-auto main_grid_contact">
+                    <div class="candidate-history-info mt-1">
+                        <h5 class="j-b mb-5">Visitors</h5>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Date</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Prisoner Name</th>
+                                <th scope="col">Visitor Name</th>
+                                <th scope="col">Relation</th>
+                                <th scope="col">Visitor Phone</th>
+                                <th scope="col">Visitor Image</th>
+                                <th scope="col">Visitor Allotted Time</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for visitors in visitors %}
+                              <tr>
+                                <td>{{visitors.created_date}}</td>
+                                <td>{{visitors.visitor_time}}</td>
+                                <td>{{visitors.prison.fname}} {{visitors.prison.lname}}</td>
+                                <td>{{visitors.visitor_name}}</td>
+                                <td>{{visitors.visitor_relation}}</td>
+                                <td>{{visitors.visitor_phone}}</td>
+                                <td><a download="" href="/static/{{visitors.visitor_image}}"><img src="/static/{{visitors.visitor_image}}" height="100px" width="100px"></a></td>
+                                <td>{{visitors.visitor_alloted_time}} Minutes</td>
+                                <!-- <td><a href="/jailor-delete-duty?id={{duties.id}}&prisoner_id={{prisoner.id}}" class="btn btn-secondary">Delete</a></td> -->
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

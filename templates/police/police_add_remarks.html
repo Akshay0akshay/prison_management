@@ -1,0 +1,110 @@
+{% extends 'police/police_dashboard.html' %}
+{% block content %}
+<style>
+	.rate {
+		float: left;
+		height: 46px;
+		padding: 0 10px;
+	}
+	.rate:not(:checked) > input {
+		position: absolute;
+		top: -9999px;
+	}
+	.rate:not(:checked) > label {
+		float: right;
+		width: 1em;
+		overflow: hidden;
+		white-space: nowrap;
+		cursor: pointer;
+		font-size: 30px;
+		color: #ccc;
+	}
+	.rate:not(:checked) > label:before {
+		content: '★ ';
+	}
+	.rate > input:checked ~ label {
+		color: #ffc700;
+	}
+	.rate:not(:checked) > label:hover,
+	.rate:not(:checked) > label:hover ~ label {
+		color: #deb217;
+	}
+	.rate > input:checked + label:hover,
+	.rate > input:checked + label:hover ~ label,
+	.rate > input:checked ~ label:hover,
+	.rate > input:checked ~ label:hover ~ label,
+	.rate > label:hover ~ input:checked ~ label {
+		color: #c59b08;
+	}
+	
+</style>
+
+<ol class="breadcrumb justify-content-left">
+    <li class="breadcrumb-item">
+        <a href="/police-dashboard">Home</a>
+    </li>
+    <li class="breadcrumb-item active">Add Remarks</li>
+</ol>
+<section class="banner-bottom-wthree pt-lg-5 pt-md-3 pt-3">
+    <div class="inner-sec-w3ls pt-md-5 pt-md-3 pt-3">
+    <!---728x90--->
+        <h3 class="tittle text-center mb-lg-5 mb-2">
+            Add Remarks</h3>
+            <!---728x90--->
+            <div class="container">
+                    
+                </div>
+        <div class="container-fluid">
+            <div class="row">
+                <!-- <div class="col-md-6 map"> -->
+                    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423286.27404345275!2d-118.69191921441556!3d34.02016130939095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos+Angeles%2C+CA%2C+USA!5e0!3m2!1sen!2sin!4v1522474296007"
+                        allowfullscreen></iframe> -->
+
+                <!-- </div> -->
+                <div class="col-md-10 mx-auto main_grid_contact">
+                    <div class="form">
+                        <h4 class="mb-4 text-left">Prisoner Remarks</h4>
+                        <form action="#" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label class="my-2">Action</label>
+                                <input class="form-control" type="text" name="action"  placeholder="" required="">
+                            </div>
+                            <div class="form-group">
+                                <label>Remarks</label>
+                                <input class="form-control" type="text" name="remarks"  placeholder="" required="">
+                            </div>
+                            <div class="form-group">
+                                <label>Rating</label><br>
+                                <table style="border: 10px;">
+                                <tr><td>1<input class="form-control" type="radio" name="rating" value = "1" required=""></td><td></td><td></td><td></td> <td></td><td></td><td></td><td>2<input class="form-control" type="radio" name="rating" value="2" required=""></td><td></td><td></td><td></td> <td></td><td></td><td></td><td>3<input class="form-control" type="radio" name="rating" value="3" required=""></td><td></td><td></td><td></td><td></td><td></td><td></td> <td>4<input class="form-control" type="radio" name="rating" value="4" required=""></td><td></td><td></td><td></td> <td></td><td></td><td></td><td>5<input class="form-control" type="radio" name="rating" value="5" required=""></td></tr>
+                            </table>
+                            </div>
+                            <div class="input-group1">
+                                <!-- <input class="form-control" width="50%" type="submit" value="Submit"> -->
+                                <button type="submit" class="btn btn-secondary" style="outline: none;
+                                padding: 20px 0;
+                                width: 30%;
+                                font-size: 14px;
+                                color: #fff;
+                                background: grey;
+                                border: none;
+                                letter-spacing: 2px;
+                                text-transform: uppercase;
+                                -webkit-transition: 0.5s all;
+                                -moz-transition: 0.5s all;
+                                -o-transition: 0.5s all;
+                                -ms-transition: 0.5s all;
+                                transition: 0.5s all;
+                                font-weight: 600;
+                                cursor: pointer;
+                                border-radius: 0px;">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

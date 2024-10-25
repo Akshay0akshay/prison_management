@@ -1,0 +1,76 @@
+{% extends 'police/police_dashboard.html' %}
+{% block content %}
+<ol class="breadcrumb justify-content-left">
+    <li class="breadcrumb-item">
+        <a href="/police-dashboard">Home</a>
+    </li>
+    <li class="breadcrumb-item active">Edit Profile</li>
+</ol>
+<section class="banner-bottom-wthree pt-lg-5 pt-md-3 pt-3">
+    <div class="inner-sec-w3ls pt-md-5 pt-md-3 pt-3">
+    <!---728x90--->
+        <h3 class="tittle text-center mb-lg-5 mb-2">
+            Update</h3>
+            <!---728x90--->
+            <div class="container">
+                    
+                </div>
+        <div class="container-fluid">
+            <div class="row">
+                <!-- <div class="col-md-6 map"> -->
+                    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423286.27404345275!2d-118.69191921441556!3d34.02016130939095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos+Angeles%2C+CA%2C+USA!5e0!3m2!1sen!2sin!4v1522474296007"
+                        allowfullscreen></iframe> -->
+
+                <!-- </div> -->
+                <div class="col-md-10 mx-auto main_grid_contact">
+                    <div class="form">
+                        <h4 class="mb-4 text-left">Police Profile Update</h4>
+                        <form action="#" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            
+                            <div class="form-group">
+                                <label class="my-2">Name</label>
+                                <input class="form-control" type="text" name="name" value="{{police.name}}" placeholder="" required="">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input class="form-control" type="text" name="phone" value="{{police.phone}}" placeholder="" required="" pattern="[6789][0-9]{9}" maxlength="10" title="Please enter your Phone No">
+                            </div>
+                           
+                            <div class="form-group">
+                                <label>Image</label><br>
+                                <img src="../../static/{{police.police_image}}"  alt="" style="float: left; margin-right: 3%; width: 12%; height: auto;">
+                                <input class="form-control" type="file" name="pimage" placeholder='' required = "">
+                            </div>
+                            <div class="form-group">
+                                <label>Address</label>
+                                <textarea id="textarea" placeholder="" name="address" required = "">{{police.address}}</textarea>
+                            </div>
+                            <div class="input-group1">
+                                <!-- <input class="form-control" width="50%" type="submit" value="Submit"> -->
+                                <button type="submit" class="btn btn-secondary" style="outline: none;
+                                padding: 20px 0;
+                                width: 30%;
+                                font-size: 14px;
+                                color: #fff;
+                                background: grey;
+                                border: none;
+                                letter-spacing: 2px;
+                                text-transform: uppercase;
+                                -webkit-transition: 0.5s all;
+                                -moz-transition: 0.5s all;
+                                -o-transition: 0.5s all;
+                                -ms-transition: 0.5s all;
+                                transition: 0.5s all;
+                                font-weight: 600;
+                                cursor: pointer;
+                                border-radius: 0px;">Update</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,165 @@
+{% extends 'jailor/jailor_dashboard.html' %}
+{% block content %}
+<ol class="breadcrumb justify-content-left">
+    <li class="breadcrumb-item">
+        <a href="/jailor-dashboard">Home</a>
+    </li>
+    <li class="breadcrumb-item active">Add Duty</li>
+</ol>
+<section class="banner-bottom-wthree pt-lg-5 pt-md-3 pt-3">
+    <div class="inner-sec-w3ls pt-md-5 pt-md-3 pt-3">
+    <!---728x90--->
+        <h3 class="tittle text-center mb-lg-5 mb-2">
+            Duties</h3>
+            <!---728x90--->
+            <div class="container">
+                    
+                </div>
+        <div class="container-fluid">
+            <div class="row">
+                <!-- <div class="col-md-6 map"> -->
+                    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423286.27404345275!2d-118.69191921441556!3d34.02016130939095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos+Angeles%2C+CA%2C+USA!5e0!3m2!1sen!2sin!4v1522474296007"
+                        allowfullscreen></iframe> -->
+
+                <!-- </div> -->
+                <div class="col-md-10 mx-auto main_grid_contact">
+                    <div class="form">
+                        <h4 class="mb-4 text-left">Duties</h4>
+                        <form action="" method="post" action="">
+                            {% csrf_token %}
+                            {% if type == "police" %}
+                            <div class="form-group">
+                                <label>Enter duty</label>
+                                <select name="duty" id="duty" class="form-control" required = "">
+                                    <option value="Security and supervision">Security and supervision</option>
+                                    <option value="Counting and headcounts">Counting and headcounts</option>
+                                    <option value="Patrolling and monitoring">Patrolling and monitoring</option>
+                                    <option value="Searches and contraband control">Searches and contraband control</option>
+                                    <option value="Enforcing rules and regulations">Enforcing rules and regulations</option>
+                                    <option value="Managing inmates movements">Managing inmates movements</option>
+                                    <option value="Responding to incidents and emergencies">Responding to incidents and emergencies</option>
+                                    <option value="Providing security for visitors">Providing security for visitors</option>
+                                    <option value="Escorting inmates">Escorting inmates</option>
+                                    <option value="Assisting with rehabilitation and programs">Assisting with rehabilitation and programs</option>
+                                    <option value="Maintaining records and reports">Maintaining records and reports</option>
+                                    <option value="Personal safety and self defence">Personal safety and self defence</option>
+                                    <option value="Maintaining professional conduct">Maintaining professional conduct</option>
+                                </select>
+                            </div>
+                            {% else %}
+                            <div class="form-group">
+                                <label>Enter duty</label>
+                                <select name="duty" id="duty" class="form-control" required = "">
+                                    <option value="Grdening">Grdening</option>
+                                    <option value="Kitchen">Kitchen</option>
+                                    <option value="Food serving">Food serving</option>
+                                    <option value="Carpending">Carpending</option>
+                                    <option value="Cleaning">Cleaning</option>
+                                    <option value="Laundry">Laundry</option>
+                                    <option value="Ground sweeping">Ground sweeping</option>
+                                    <option value="Maintaining living area">Maintaining living area</option>
+                                    <option value="Janitorial work">Janitorial work</option>
+                                    <option value="Participating in rehabilitation programs">Participating in rehabilitation programs</option>
+                                    <option value="Community service">Community service</option>
+                                    
+                                </select>
+                            </div>
+                            {% endif %}
+                            <div class="form-group">
+                                <label>Duty Start date</label><br>
+                                <input type = "date" name = "dutystartdate" onchange="validateDate(this.value)" required = "">
+                            </div>
+                            <div class="form-group">
+                                <label>Duty End date</label><br>
+                                <input type = "date" name = "dutyenddate" onchange="validateDate(this.value)" required = "">
+                            </div>
+                           
+                            <div class="input-group1">
+                                <!-- <input class="form-control" width="50%" type="submit" value="Submit"> -->
+                                <button type="submit" class="btn btn-secondary" id="subBtn" style="outline: none;
+                                padding: 20px 0;
+                                width: 30%;
+                                font-size: 14px;
+                                color: #fff;
+                                background: grey;
+                                border: none;
+                                letter-spacing: 2px;
+                                text-transform: uppercase;
+                                -webkit-transition: 0.5s all;
+                                -moz-transition: 0.5s all;
+                                -o-transition: 0.5s all;
+                                -ms-transition: 0.5s all;
+                                transition: 0.5s all;
+                                font-weight: 600;
+                                cursor: pointer;
+                                border-radius: 0px;">Add</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="banner-bottom-wthree pt-lg-5 pt-md-3 pt-3">
+    <div class="inner-sec-w3ls pt-md-5 pt-md-3 pt-3">
+    <!---728x90--->
+        <h3 class="tittle text-center mb-lg-5 mb-2">
+           Previous duties</h3>
+            <!---728x90--->
+            <div class="container">
+                    
+                </div>
+        <div class="container-fluid">
+            <div class="row">
+                <!-- <div class="col-md-6 map"> -->
+                    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423286.27404345275!2d-118.69191921441556!3d34.02016130939095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c75ddc27da13%3A0xe22fdf6f254608f4!2sLos+Angeles%2C+CA%2C+USA!5e0!3m2!1sen!2sin!4v1522474296007"
+                        allowfullscreen></iframe> -->
+
+                <!-- </div> -->
+                <div class="col-md-10 mx-auto main_grid_contact">
+                    <div class="candidate-history-info mt-1">
+                        <h5 class="j-b mb-5">Previous duties</h5>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Duty Name</th>
+                                <th scope="col">Start Date</th>
+                                <th scope="col">End Date</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                {% for p in previousdutys %}
+                              <tr>
+                                <td>{{p.duty_name}}</td>
+                                <td>{{p.created_date}}</td>
+                                <td>{{p.dutyenddate}}</td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                           
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function validateDate(inputDate) {
+        // var inputDate = document.getElementById("dateInput").value;
+        var currentDate = new Date();
+        var enteredDate = new Date(inputDate);
+
+        if (enteredDate < currentDate) {
+            alert("Please enter a valid date");
+            document.getElementById("subBtn").disabled = true;
+        } else {
+            document.getElementById("subBtn").disabled = false;
+
+        }
+    }
+  </script>
+{% endblock %}

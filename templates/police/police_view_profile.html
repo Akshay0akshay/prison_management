@@ -1,0 +1,61 @@
+{% extends 'police/police_dashboard.html' %}
+{% block content %}
+<ol class="breadcrumb justify-content-left">
+    <li class="breadcrumb-item">
+        <a href="/police-dashboard">Home</a>
+    </li>
+    <li class="breadcrumb-item active">My Profile</li>
+</ol>
+<section class="banner-bottom-wthree py-lg-5 py-md-5 py-3">
+    <div class="container">
+        <div class="inner-sec-w3ls py-lg-5  py-3">
+        <!---728x90--->
+            <div class="single-user-candidate">
+                <div class="user-detail-info text-center">
+                    <div class="user-pic">
+                        <img src="../../static/{{police.police_image}}" class="img-fluid rounded-circle" alt="">
+                    </div>
+                    <div class="user-content-info emply-resume-info text-center mt-4">
+                        <h4>
+                            <a href="#">{{police.name}}</a>
+                        </h4>
+                        <h5 class="mt-2">Date-of-Joining:
+                            <span>{{police.doj}}</span></h5>
+                            <h5 class="mt-2">Rank:
+                                <span>{{police.rank}}</span></h5>
+                                <h5 class="mt-2">Degree Marks:
+                                    <span>{{police.degree}}</span></h5>
+                                    <h5 class="mt-2">Phone:
+                                        <span>{{police.phone}}</span></h5>
+                        <p>
+                            <i class="fas fa-map-marker-alt"></i> {{police.address}}</p>
+                        <ul class="links_bottom_emp mt-2">
+                            <li>
+                                <a href="candidate_single.html">
+                                    <i class="far fa-envelope"></i>
+                                    <span class="icon_text"> {{police.policelog.username}}</span>
+                                </a>
+                            </li>
+                            <!-- <li>
+                                <a href="location_single.html">
+                                    <i class="fas fa-eye"></i>
+                                    <span class="icon_text">View full Job Description</span>
+                                </a>
+                            </li> -->
+                        </ul>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="candidate-btn-in d-flex  mt-5 ml-9 " > <!--tlbr -->
+                <div class="can-btn">
+                    <a href="/police-updateprofile?pid={{police.id}}" style="background-color: yellowgreen;">
+                        <i class="far fa-user"></i> Update</a>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

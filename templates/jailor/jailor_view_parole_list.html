@@ -1,0 +1,62 @@
+{% extends 'jailor/jailor_dashboard.html' %}
+{% block content %}
+<ol class="breadcrumb justify-content-left">
+    <li class="breadcrumb-item">
+        <a href="/jailor-dashboard">Home</a>
+    </li>
+    <li class="breadcrumb-item active">Parole List</li>
+</ol>
+
+<section class="banner-bottom-wthree py-lg-5 py-md-5 py-3">
+    <div class="container">
+        <div class="inner-sec-w3ls py-lg-5  py-3">
+        <!---728x90--->
+            <div class="single-user-candidate" >
+                <div class="col-md-3 emp_btn text-right" style="margin-left: 750px;">
+                    <a href="" onclick="printPage()">Print </a>
+                </div>
+                
+            </div>
+            
+           
+            
+            <!--//history -->
+            <div class="candidate-history-info mt-5">
+                <h5 class="j-b mb-5">Parole List</h5>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Request Date</th>
+                        <th scope="col">Prisoner Name</th>
+                        <th scope="col">From</th>
+                        <th scope="col">To</th>
+                        <th scope="col">Reason</th>
+                        <th scope="col">Action</th>
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for paroles in paroles %}
+                      <tr>
+                        
+                        <td>{{paroles.created_date}}</td>
+                        <td>{{paroles.prison.fname}} {{paroles.prison.lname}} <br><a href="/jailor_view_prisoner_detailed?prisoner_id={{paroles.prison.id}}">view more</a></td>
+                        <td>{{paroles.from_date}}</td>
+                        <td>{{paroles.to_date}}</td>
+                        <td>{{paroles.reason}}</td>
+                        <td><a href="/jailor-accept-parole?id={{paroles.id}}" class="btn btn-secondary">Accept</a>
+                            <a href="/jailor-reject-parole?id={{paroles.id}}" class="btn btn-secondary">Reject</a></td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    function printPage() {
+        window.print();
+    }
+</script>
+{% endblock %}

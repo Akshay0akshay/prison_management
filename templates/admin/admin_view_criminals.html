@@ -1,0 +1,62 @@
+{% extends 'admin/admin_dashboard.html' %}
+{% block content %}
+<ol class="breadcrumb justify-content-left">
+    <li class="breadcrumb-item">
+        <a href="/admin-dashboard">Home</a>
+    </li>
+    <li class="breadcrumb-item active">View Prisoners</li>
+</ol>
+<section class="banner-bottom-wthree py-lg-5 py-md-5 py-3">
+    <div class="container">
+        <div class="inner-sec-w3ls py-lg-5  py-3">
+        <!---728x90--->
+            <h3 class="tittle text-center mb-lg-4 mb-3">
+                View Prisoners</h3>
+                <!---728x90--->
+            <div class="row choose-main mt-5">
+                <!--  -->
+                
+                <div class="col-lg-8 job_info_left mx-auto">
+                    <!--/ Emply List -->
+                    <form action="" method="post">
+                        {% csrf_token %}
+                    <input type="date" name="date" id="">
+                    <button type="submit">Filter</button>
+                     </form>
+                     
+                    {% for prisoner in prisoners %}
+                    <div class="emply-resume-list row mb-3">
+                        <div class="col-md-9 emply-info">
+                            <div class="emply-img">
+                                <img src="../../static/{{prisoner.prisoner_image}}" alt="" class="img-fluid">
+                            </div>
+                            <div class="emply-resume-info">
+                                <h4><a>{{prisoner.fname}} {{prisoner.lname}}</a></h4>
+                                <h5 class="mt-2"><span>{{prisoner.aadhar}}</span> </h5>
+                                <p> {{prisoner.crimes}}</p>
+                                <p> {{prisoner.from_date}}</p>
+                                <ul class="links_bottom_emp mt-2">
+                                    <li><a href="/admin_view_prisoner_detailed?prisoner_id={{prisoner.id}}"> <span class="icon_text" style="color: blue;"> View more</span></a></li>
+                                    <!-- <li><a href="/jailor_edit_prisoner_detailed?prisoner_id={{prisoner.id}}"> <span class="icon_text" style="color: yellowgreen;">Edit</span></a></li>
+                                    -->
+                                    {% if prisoner.status != 'Released' %}
+
+                                    {% else %}
+                                    <i>Released</i>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        
+                    </div>
+                    {% endfor %}
+                  
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}

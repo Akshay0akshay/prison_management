@@ -1,0 +1,64 @@
+{% extends 'admin/admin_dashboard.html' %}
+{% block content %}
+
+<ol class="breadcrumb justify-content-left">
+    <li class="breadcrumb-item">
+        <a href="/admin-dashboard">Home</a>
+    </li>
+    <li class="breadcrumb-item active">Approve Police List</li>
+</ol>
+<!-- banner-text -->
+<!--/process-->
+<section class="banner-bottom-wthree py-lg-5 py-md-5 py-3">
+    <div class="container">
+        <div class="inner-sec-w3ls py-lg-5  py-3">
+        <!---728x90--->
+            <h3 class="tittle text-center mb-lg-4 mb-3">
+                Approve Police List</h3>
+                <!---728x90--->
+            <div class="row choose-main mt-5">
+                
+                <div class="col-lg-8 mx-auto">
+                    <!--/ Emply List -->
+                    {% for police in polices %}
+                    <div class="emply-resume-list row mb-3">
+                        <div class="col-md-9 emply-info">
+                            <div class="emply-img">
+                                <img src="../../static/{{police.police_image}}" alt="" class="img-fluid">
+                            </div>
+                            <div class="emply-resume-info">
+                                <h4><a href="candidates_single.html">{{police.name}}</a></h4>
+                                <h5 class="mt-2"><span>{{police.rank}}</span></h5>
+                                <p></i>Ph: {{police.phone}}</p>
+                                <p></i>Date-of-birth: {{police.dob}}, {{police.p_age}} Years</p>
+                                <p></i>Degree Mark: {{police.degree}}</p>
+                                <p><i class="fas fa-map-marker-alt"></i> {{police.address}}</p>
+                                <ul class="links_bottom_emp mt-2">
+                                    <li><a ><i class="far fa-envelope"></i> <span class="icon_text" style="pointer-events: none;">{{police.policelog.username}}</span></a></li>
+                                    <!-- <li><a href="#"><i class="fas fa-eye"></i> <span class="icon_text">View full Description</span></a></li> -->
+                                </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div style="display: flex;">
+                        <div class="col-md-1 emp_btn text-right">
+                            <a href="/admin-approve_singlepolice?pid={{police.id}}">Approve </a>
+                        </div>
+                        <div class="col-md-1 emp_btn text-right">
+                            <a href="/admin-reject_singlepolice?pid={{police.id}}" style="margin-left: 80px;">Reject </a>
+                        </div>
+                    </div>
+                    </div>
+                    {% endfor %}
+                    
+                    <div class="col-md-3 emp_btn text-right">
+                        <a href="/admin-approve_allpolice">Approve All </a>
+                    </div>
+                    <!--// Emply List3 -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+{% endblock %}

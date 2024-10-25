@@ -1,0 +1,53 @@
+{% extends 'admin/admin_dashboard.html' %}
+{% block content %}
+<ol class="breadcrumb justify-content-left">
+    <li class="breadcrumb-item">
+        <a href="/jailor-dashboard">Home</a>
+    </li>
+    <li class="breadcrumb-item active">View Police Duty</li>
+</ol>
+<section class="banner-bottom-wthree py-lg-5 py-md-5 py-3">
+    <div class="container">
+        <div class="inner-sec-w3ls py-lg-5  py-3">
+        <!---728x90--->
+            <div class="single-user-candidate" >
+                <div class="col-md-3 emp_btn text-right" style="margin-left: 750px;">
+                    <a href="" onclick="printPage()">Print </a>
+                </div>
+            </div>
+            <!--//history -->
+            <div class="candidate-history-info mt-5">
+                <h5 class="j-b mb-5">Duties</h5>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Filter using date">
+                    <input type = "date" name = "filterdate">
+                </form>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">End Date</th>
+                        <th scope="col">Duty</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for duties in duties %}
+                      <tr>
+                        <td>{{duties.dutystartdate}}</td>
+                        <td>{{duties.dutyenddate}}</td>
+                        <td>{{duties.duty_name}}</td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    function printPage() {
+        window.print();
+    }
+</script>
+{% endblock %}
